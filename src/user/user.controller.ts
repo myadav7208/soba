@@ -12,10 +12,13 @@ export class userController{
         
     ){}
 
-     @UseGuards(jwtAuth)
+ 
   @Get(':id' )
    async getUser(@Param('id') id:number  ){
            return this.userService.findById(id)
    }
-  
+   @Get('/test')
+  async tester(@Request() req) {
+    return req.user;
+  }
 }
