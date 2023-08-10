@@ -1,25 +1,25 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Client } from "./client.entity";
 
-@Entity({name:"company table"})
+@Entity({name:"Company"})
 export class Company{
    
      @PrimaryGeneratedColumn()
-     Company_id
+     companyId
      @Column()
-     CompanyName:string
+     companyName:string
      @Column()
-     GST:string
+     gst:string
      @Column({nullable:true})
-     ContactNo:Number
+     contactNo:Number
      @Column({nullable:true})
-     Email:string
+     email:string
      @Column( )
-     Address:string
+     address:string
       @Column()
       state:string
       @Column()
       city:string
-      @ManyToOne(()=>Client,client=>client.company_id)
-      clients:Client[]
+      // @ManyToOne(()=>Client,client=>client.company_id)
+      // clients:Client
 }

@@ -27,8 +27,8 @@ export class Client {
   state: string;
   @Column({name:"City"})
   city: string;
-  @OneToMany((type) => Company, (Company) => Company.clients)
-  @JoinTable()
-  @Column({name:"Company"})
-  company_id: Company[];
+  // @OneToMany((type) => Company, (Company) => Company.clients)
+  // @JoinTable()
+  // @Column({name:"Company"})
+  // company_id: Company[];
 }

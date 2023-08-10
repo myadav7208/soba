@@ -1,7 +1,7 @@
 
-import {Injectable} from '@nestjs/common'
+import {Injectable, NotFoundException} from '@nestjs/common'
 import {InjectRepository}  from '@nestjs/typeorm'
-import { NotFoundError } from 'rxjs';
+ 
 import { User } from "src/entity/user.entity";
 import { Repository } from "typeorm";
 
@@ -34,7 +34,7 @@ export class userService{
             }
         }) 
          if(!user){
-           return   NotFoundError
+           return   new NotFoundException('user does not exit') 
          }
           return user
     }
