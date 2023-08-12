@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 import { vendorServices } from './vendor.service';
  
-import { updateVendorDto } from 'src/dtos/vendor/update.dto';
+import { updateVendorDto } from 'src/dtos/vendor/update.dto';  
  
 import { vendor} from 'src/entity/vendor.entity';
 import { createVendorDto } from 'src/dtos/vendor/create.dto';
@@ -31,7 +31,7 @@ export class vendorController {
   ): Promise<vendor> {
     return await this.vendorServices.getOnevendor(id);
   }
-  // get all cleint
+  // get all vendor
   @Get()
   async getvendor() {
     return await this.vendorServices.getALLvendor();
@@ -52,7 +52,7 @@ export class vendorController {
     @Body() data: updateVendorDto,
   ) {
     const res = await this.vendorServices.updatevendor(id, data);
-    console.log(res)
+    
     if (res.affected <1) {
       throw new BadRequestException('something went wrong please try again later');
     }
