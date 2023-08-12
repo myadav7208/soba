@@ -12,6 +12,8 @@ import { Company } from './entity/company.entity';
  import { companyModule } from './company/company.module';
 import { clientModule } from './client/client.module';
 import { Client } from './entity/client.entity';
+import { vendorModule } from './vendor/vendor.module';
+import { vendor } from './entity/vendor.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -35,13 +37,14 @@ import { Client } from './entity/client.entity';
           
          dropSchema:true,
 
-        entities: [User,Company,Client],
+        entities: [User,Company,Client,vendor],
       }),
     }),
     companyModule,
     AuthModule,
     userModule,
-    clientModule
+    clientModule,
+    vendorModule
   ],
   controllers: [AppController],
   providers: [AppService],

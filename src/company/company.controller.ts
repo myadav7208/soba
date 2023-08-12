@@ -44,6 +44,7 @@ export class companyController {
 
   // update company by its id
   @Patch('update/:id')
+  @UsePipes(new ValidationPipe())
   async update(
     @Param('id', ParseIntPipe) id: number,
     @Body() data: updateCompanyDto,

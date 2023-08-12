@@ -20,7 +20,7 @@ export class companyServices{
       }
      })
      if(!company){
-      throw new NotFoundException("company doest not exist")
+      throw new NotFoundException("company does not exist")
       
   }
   return company
