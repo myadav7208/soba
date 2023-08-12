@@ -7,7 +7,7 @@ import {
 } from 'class-validator';
 
 export class createCompanyDto {
-  companyId: string;
+  
   @IsString()
   @IsNotEmpty()
   companyName: string;
@@ -18,7 +18,7 @@ export class createCompanyDto {
 
   @IsNumber()
   @IsOptional()
-  contactNo: Number;
+  contactNo: number;
   @IsOptional()
   @IsEmail()
   email: string;

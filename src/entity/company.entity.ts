@@ -1,8 +1,9 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Client } from "./client.entity";
+import { Exclude } from "class-transformer";
 
 @Entity({name:"Company"})
-export class Company{
+export class Company extends BaseEntity{
    
      @PrimaryGeneratedColumn()
      companyId
@@ -11,7 +12,7 @@ export class Company{
      @Column()
      gst:string
      @Column({nullable:true})
-     contactNo:Number
+     contactNo:number
      @Column({nullable:true})
      email:string
      @Column( )
@@ -20,6 +21,10 @@ export class Company{
       state:string
       @Column()
       city:string
-      // @ManyToOne(()=>Client,client=>client.company_id)
+    
+      // @Exclude()
+      // @OneToMany(() => Client, (client) =>client.company)
+
+      // @Column()
       // clients:Client
 }

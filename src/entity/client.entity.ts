@@ -1,8 +1,10 @@
 import {
  
+  BaseEntity,
   Column,
   Entity,
   JoinTable,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -10,25 +12,24 @@ import { Company } from './company.entity';
  
 
 @Entity({ name: 'Client' })
-export class Client {
+export class Client extends BaseEntity{
   @PrimaryGeneratedColumn()
-  client_id;
+  clientId;
   @Column({name:"Company"})
   companyName: string;
   @Column({name:"GST"})
   gst: string;
   @Column({ nullable: true ,name:"OfficeNo"})
-  officeNo: Number;
+  officeNo: number;
   @Column({ nullable: true,name:"Email" })
   email: string;
   @Column({name:"PinCode"})
-  pinCode: Number;
+  pinCode: number;
   @Column({name:"State"})
   state: string;
   @Column({name:"City"})
   city: string;
-  // @OneToMany((type) => Company, (Company) => Company.clients)
-  // @JoinTable()
-  // @Column({name:"Company"})
-  // company_id: Company[];
+
+//  @ManyToOne(()=>Company )
+//    company
 }

@@ -17,8 +17,5 @@ export class userController{
    async getUser(@Param('id') id:number  ){
            return this.userService.findById(id)
    }
-   @Get('/test')
-  async tester(@Request() req) {
-    return req.user;
-  }
+   
 }

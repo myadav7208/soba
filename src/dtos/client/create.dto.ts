@@ -6,28 +6,29 @@ import {
   IsString,
 } from 'class-validator';
 
-export class updateCompanyDto {
+export class createClientDto {
+  
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   companyName: string;
 
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   gst: string;
 
   @IsNumber()
   @IsOptional()
-  contactNo: number;
+  officeNo: number;
   @IsOptional()
   @IsEmail()
   email: string;
+  @IsNumber()
+  @IsNotEmpty()
+  pinCode: number;
   @IsString()
-  @IsOptional()
-  address: string;
-  @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   state: string;
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   city: string;
 }

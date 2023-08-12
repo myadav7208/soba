@@ -9,8 +9,8 @@ import { JwtService } from '@nestjs/jwt';
 import { userService } from 'src/user/user.service';
 
 interface userData {
-  firstname: string;
-  lastname?: string;
+  firstName: string;
+  lastName?: string;
   username: string;
   password: string;
 }

@@ -10,8 +10,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
       @Column({name:"Password"})
       password:string
       @Column({name:"Firstname"})
-      firstname:string
+      firstName:string
       @Column({nullable:true,name:"Lastname"})
-      lastanme:string
+      lastName:string
 
  }

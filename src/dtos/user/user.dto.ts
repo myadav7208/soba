@@ -10,8 +10,8 @@ export class userDto {
   password: string;
   @IsString()
   @IsNotEmpty()
-  firstname: string;
+  firstName: string;
   @IsString()
   @IsOptional()
-  lastname: string;
+  lastName: string;
 }

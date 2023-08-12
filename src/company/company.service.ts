@@ -1,6 +1,7 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable ,BadRequestException,NotFoundException} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { createCompanyDto } from "src/dtos/company/create.dto";
+ 
+import { updateCompanyDto } from "src/dtos/company/update.dto";
 import { Company } from "src/entity/company.entity";
 import { Repository } from "typeorm";
 
@@ -12,9 +13,35 @@ export class companyServices{
         @InjectRepository(Company)
          private readonly company:Repository<Company>
       ){}
+   async getOneCompany(id:number){
+     const company= await this.company.findOne({
+      where:{
+        companyId:id
+      }
+     })
+     if(!company){
+      throw new NotFoundException("company doest not exist")
+      
+  }
+  return company
+   }
+     async getALLCompany ():Promise<Company[]> {
+               const allCompany= await this.company.find()
+             
+                if(!allCompany.length){
+                  throw new NotFoundException("no company found")
+               }
+               return allCompany;
+     }
+      async createCompany(data ) {
+        return await this.company.save(data)
+      }
+      async updateCompany(id:number,data:Partial<updateCompanyDto>){
 
-
-      async createCompany(data:createCompanyDto){
-        return this.company.save(data)
+          if(!id){
+          throw new BadRequestException('something went wrong')
+          }
+        return this.company.update({companyId:id},data )
+     
       }
 }

@@ -7,8 +7,11 @@ import { User } from './entity/user.entity';
 import { userModule } from './user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from '../config';
-import { companyModule } from './company/company.module';
+ 
 import { Company } from './entity/company.entity';
+ import { companyModule } from './company/company.module';
+import { clientModule } from './client/client.module';
+import { Client } from './entity/client.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -27,16 +30,18 @@ import { Company } from './entity/company.entity';
         host: configService.get('host'),
         port: configService.get('dbPort'),
         database: configService.get('database'),
-         synchronize:true,
-         autoLoadEntities:true,
          
+         synchronize:true,
+          
+         dropSchema:true,
 
-        entities: ['dist/**/*.entity.js'],
+        entities: [User,Company,Client],
       }),
     }),
     companyModule,
     AuthModule,
     userModule,
+    clientModule
   ],
   controllers: [AppController],
   providers: [AppService],
